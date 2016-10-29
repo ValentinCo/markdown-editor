@@ -1,7 +1,9 @@
 var app = require('electron').remote; 
 var dialog = app.dialog;
 var fs = require('fs');
-
+var showdown  = require('showdown');
+var converter;
+var html;
 
 $('#open').on('click',function(){
     dialog.showOpenDialog(function (fileNames) {
@@ -15,10 +17,14 @@ $('#open').on('click',function(){
 		            return;
 		        }
 	          	$(".setMarkdownTextarea").val(data);
+   				converter = new showdown.Converter();
+   				html = converter.makeHtml(data);
+	          	$("#viewMarkdown").html(html);
     	    });
         }
      	
 	});  
 	
 });
+
 
