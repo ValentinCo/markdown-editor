@@ -1,4 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import App from  './App';
-ReactDOM.render(<App />, document.getElementById('app'))
+import Header from  './Header';
+import Body from  './Body';
+ReactDOM.render(<Header />, document.getElementById('header'));
+ReactDOM.render(<Body />, document.getElementById('content'));
+//
