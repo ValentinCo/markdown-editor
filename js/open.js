@@ -2,12 +2,13 @@ var app = require('electron').remote;
 var dialog = app.dialog;
 var fs = require('fs');
 var showdown  = require('showdown');
+var listener = new window.keypress.Listener();
 var converter;
 var html;
-window.fileName;
+window.filePath;
 
-$('#open').on('click',function(){
-    dialog.showOpenDialog(function (fileNames) {
+function open(){
+	 dialog.showOpenDialog(function (fileNames) {
     
         if(fileNames === undefined){
            alert("No file selected");
@@ -26,7 +27,9 @@ $('#open').on('click',function(){
         }
      	
 	});  
-	
-});
+}
+
+$('#open').on('click', open);
+listener.simple_combo("ctrl o", open);
 
 
