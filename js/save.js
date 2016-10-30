@@ -14,8 +14,7 @@ function saveAs(){
            return;
         }
 
-        window.fileName = fileName;
-        console.log(window.fileName)
+        window.filePath = fileName;
 
         fs.writeFile(fileName, content, function (err) {
            if(err){
@@ -30,7 +29,7 @@ function saveAs(){
 
 function save(){
 	content = $('.setMarkdownTextarea').val();
-	if(window.fileName === undefined){
+	if(window.filePath === undefined){
 
 		dialog.showSaveDialog(function (fileName) {
 	      
@@ -50,7 +49,7 @@ function save(){
 		return;
 	}
 
-	fs.writeFile(window.fileName, content, function (err) {
+	fs.writeFile(window.filePath, content, function (err) {
         if(err){
             alert("An error ocurred creating the file "+ err.message)
         }
@@ -60,7 +59,7 @@ function save(){
 }
 
 
-listener.simple_combo("ctrl shift s", saveAs.bind(this));
+listener.simple_combo("ctrl shift s", saveAs);
 
 $('#saveAs').on('click',function(){
 	saveAs();	
@@ -68,7 +67,7 @@ $('#saveAs').on('click',function(){
 
 
 
-listener.simple_combo("ctrl s", save.bind(this));
+listener.simple_combo("ctrl s", save);
 
 $('#save').on('click',function(){
 	save();
