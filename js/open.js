@@ -4,6 +4,7 @@ var fs = require('fs');
 var showdown  = require('showdown');
 var converter;
 var html;
+window.fileName;
 
 $('#open').on('click',function(){
     dialog.showOpenDialog(function (fileNames) {
@@ -16,6 +17,7 @@ $('#open').on('click',function(){
 		            alert("An error ocurred reading the file :" + err.message);
 		            return;
 		        }
+		        window.fileName = fileNames[0];
 	          	$(".setMarkdownTextarea").val(data);
    				converter = new showdown.Converter();
    				html = converter.makeHtml(data);
