@@ -3,7 +3,12 @@ var dialog = app.dialog;
 var fs = require('fs');
 var content;
 var listener = new window.keypress.Listener();
+window.itIsSaved = true;
 
+$('.setMarkdownTextarea').change(function(){
+	window.itIsSaved = false;
+	console.log(window.itIsSaved);
+})
 
 function saveAs(){
 	content = $('.setMarkdownTextarea').val();
@@ -20,7 +25,8 @@ function saveAs(){
            if(err){
                alert("An error ocurred creating the file "+ err.message)
            }
-                        
+
+           window.itIsSaved = true;
            alert("The file has been saved");
            return;
        });
@@ -42,7 +48,7 @@ function save(){
 	           if(err){
 	               alert("An error ocurred creating the file "+ err.message)
 	           }
-	                        
+	           window.itIsSaved = true;         
 	           alert("The file has been saved");
 	       });
 		}); 
@@ -53,7 +59,7 @@ function save(){
         if(err){
             alert("An error ocurred creating the file "+ err.message)
         }
-                        
+        window.itIsSaved = true;               
         alert("The file has been saved");
     });
 }
