@@ -18,7 +18,8 @@ function open(){
 		            alert("An error ocurred reading the file :" + err.message);
 		            return;
 		        }
-		        window.fileName = fileNames[0];
+		        window.filePath = fileNames[0];
+		        $('title').html("Markdown Editor " + fileNames[0]);
 	          	$(".setMarkdownTextarea").val(data);
    				converter = new showdown.Converter();
    				html = converter.makeHtml(data);
