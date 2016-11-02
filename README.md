@@ -3,8 +3,8 @@
 ### Version 0.1 :
 
 ```sh
+# Clone
 npm install 
-
 ```
 
 Include: 
