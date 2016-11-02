@@ -2,6 +2,11 @@
 
 ### Version 0.1 :
 
+```sh
+npm install 
+
+```
+
 Include: 
 
 - Save files / Save as,
@@ -14,6 +19,9 @@ Include:
 - Message box for saving before close apply ,
 - Generate generalFunction.js for general function,
 - Toolbar !?
+
+
+
 
 
 
