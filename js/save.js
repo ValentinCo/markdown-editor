@@ -1,83 +1,94 @@
-var app = require('electron').remote; 
-var dialog = app.dialog;
-var fs = require('fs');
-var content;
-var listener = new window.keypress.Listener();
-window.itIsSaved = true;
+(function(){
 
-$('.setMarkdownTextarea').change(function(){
-	window.itIsSaved = false;
-	console.log(window.itIsSaved);
-})
+	var app = require('electron').remote; 
+	var dialog = app.dialog;
+	var fs = require('fs');
+	var listener = new window.keypress.Listener();
+	var data = require('./js/data.js');
 
-function saveAs(){
-	content = $('.setMarkdownTextarea').val();
 
-	dialog.showSaveDialog(function (fileName) {
-        if (fileName === undefined){
-           alert("You didn't save the file");
-           return;
-        }
+	
 
-        window.filePath = fileName;
+	var apply = {
 
-        fs.writeFile(fileName, content, function (err) {
-           if(err){
-               alert("An error ocurred creating the file "+ err.message)
-           }
+		init : function(){
+			this.listeners();
+			this.itIsSaved();
+		},
 
-           window.itIsSaved = true;
-           alert("The file has been saved");
-           return;
-       });
-	}); 
-}
+		itIsSaved : function(){
 
-function save(){
-	content = $('.setMarkdownTextarea').val();
-	if(window.filePath === undefined){
+			$('.setMarkdownTextarea').change(function(){
+				data.itIsSaved = false;
+			});
 
-		dialog.showSaveDialog(function (fileName) {
-	      
-	       if (fileName === undefined){
-	            alert("You didn't save the file");
-	            return;
-	        }
-	        
-	       fs.writeFile(fileName, content, function (err) {
-	           if(err){
-	               alert("An error ocurred creating the file "+ err.message)
-	           }
-	           window.itIsSaved = true;         
-	           alert("The file has been saved");
-	       });
-		}); 
-		return;
+		},
+
+		content:function(){
+			data.content = $('.setMarkdownTextarea').val();
+		},
+
+		showSaveDialog : function(){
+			
+			dialog.showSaveDialog(function (fileName) {
+		      
+		       if (fileName === undefined){
+		            alert("You didn't save the file");
+		            return;
+		        }
+		        
+		       
+		        apply.writeFile(fileName);
+		    	return;
+
+			}); 
+		},
+
+		writeFile : function(fileName){
+
+			fs.writeFile(fileName, data.content, function (err) {
+		           
+		           if(err){
+		               alert("An error ocurred creating the file "+ err.message)
+		           }
+
+		           data.itIsSaved = true;         
+		           alert("The file has been saved");
+
+		    });
+		},
+
+		saveAs : function(){
+			apply.content();
+			apply.showSaveDialog();
+		},
+
+		fastSave : function(){
+			apply.content();
+			if(data.filePath === undefined){
+				apply.showSaveDialog();
+				return;
+			}
+			apply.writeFile(data.filePath);
+		},
+
+		listeners : function(){
+			$('#saveAs').on('click',apply.saveAs);
+			$('#save').on('click',apply.fastSave);
+			listener.simple_combo("ctrl s", apply.fastSave);
+		}
+
 	}
 
-	fs.writeFile(window.filePath, content, function (err) {
-        if(err){
-            alert("An error ocurred creating the file "+ err.message)
-        }
-        window.itIsSaved = true;               
-        alert("The file has been saved");
-    });
-}
 
+	apply.init();
 
-listener.simple_combo("ctrl shift s", saveAs);
-
-$('#saveAs').on('click',function(){
-	saveAs();	
-})
+})();
 
 
 
-listener.simple_combo("ctrl s", save);
-
-$('#save').on('click',function(){
-	save();
-});
 
 
+
+//conflit si ctrl shift s
 
