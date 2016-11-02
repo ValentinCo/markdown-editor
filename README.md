@@ -7,6 +7,7 @@
 ```sh
 # Clone
 npm install 
+npm start
 ```
 
 Include: 
