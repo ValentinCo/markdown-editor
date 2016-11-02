@@ -2,6 +2,8 @@
 
 ### Version 0.1 :
 
+[Version 0.1](https://github.com/jordanlefort/markdown-editor/tree/version-0.1)
+
 ```sh
 # Clone
 npm install 
