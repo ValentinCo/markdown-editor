@@ -1,17 +1,20 @@
-# markdown-editor
+# Markdown-editor
 
-Drop down ok;
+### Version 0.1 :
 
-Save files ok;
+Include: 
 
-Sava as ok;
+- Save files / Save as,
+- Event key  ( ctrl + o and ctrl + s ),
+- Open file,
+- New files .
 
-Event key ok;
+#### todo :
 
-Edit ok;
+- Message box for saving before close apply ,
+- Generate generalFunction.js for general function,
+- Toolbar !?
 
-New files ok; confirm saving before create new file
 
-Todo: saving before close apply
 
 
