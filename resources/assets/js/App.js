@@ -5,33 +5,33 @@ class App extends React.Component{
 	constructor(){
 		super();
 		this.state = {
-			active : false,
+			mainActive : false,
+			helpActive : false,
 		};
 
 		
 	}
 
 	updateDropDown(menu){
-
-		$(menu).addClass('transition visible');
-		$(menu).removeClass('lala');
-		$('.lala').removeClass('transition visible')
-		$(menu).addClass('lala');
 		
-	}
-
-	close(){
-
-		$('.lala').removeClass('transition visible')
+		if(!this.state[menu+'Active']) {
+			this.setState({className: 'transition visible'})
+		} else {
+			this.setState({className:'lala'})
+		}
+		let state = {}
+		state[menu+'Active'] = !this.state[menu+'Active']
+		this.setState(state)
 	}
 
 	
 
 	render(){
+		const { className } = this.state;
 		return(
 			<div>
-			<MenuFile onMouseOut={this.close} onMouseOver={this.updateDropDown.bind(this, '#menuFiles')}/>
-			<MenuHelp onMouseOut={this.close} onMouseOver={this.updateDropDown.bind(this, '#menuHelp')}/>
+			<MenuFile onClick={this.updateDropDown} className={className}/>
+			<MenuHelp onMouseOut={this.close} onMouseOver={this.updateDropDown}/>
 			</div>
 		)
 	}
@@ -59,8 +59,9 @@ class IconeMenu extends React.Component{
 
 class MenuFile extends React.Component{
 	render(){
+		const {onMouseOver, onMouseOut, className } = this.props;
 		return(
-			<div onMouseOut={this.props.onMouseOut} onMouseOver={this.props.onMouseOver} className='ui dropdown'>
+			<div onMouseOut={onMouseOut} onMouseOver={onMouseOver} className={className+' ui dropdown'}>
 				<MenuTitle>Files</MenuTitle>		
 				<IconeMenu/>
 				<MenuFileContent  id='menuFiles'></MenuFileContent>
