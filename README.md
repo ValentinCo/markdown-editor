@@ -1,14 +1,16 @@
 # Markdown-editor
-
-### Version 0.1 :
-
-[Version 0.1](https://github.com/jordanlefort/markdown-editor/tree/version-0.1)
+[Version 0.1.1](https://github.com/jordanlefort/markdown-editor/tree/version-0.1.1)
 
 ```sh
 # Clone
 npm install 
 npm start
 ```
+### Version 0.1.1 :
+
+- toolBar : image / url / strong / italic / title / code / hr
+
+### Version 0.1 :
 
 Include: 
 
@@ -21,7 +23,6 @@ Include:
 
 - Message box for saving before close apply ,
 - Generate generalFunction.js for general function,
-- Toolbar !?
 
 
 
