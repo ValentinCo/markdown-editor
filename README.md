@@ -6,14 +6,16 @@
 npm install 
 npm start
 ```
-### Version 0.1.1 :
 
-- toolBar : image / url / strong / italic / title / code / hr
 
 ### Version 0.1 :
 
-Include: 
+#### Version 0.1.1 :
 
+- corrective : add file title after save as.
+- toolBar : image / url / strong / italic / title / code / hr
+
+#### Version 0.1.0:
 - Save files / Save as,
 - Event key  ( ctrl + o and ctrl + s ),
 - Open file,
@@ -23,7 +25,6 @@ Include:
 
 - Message box for saving before close apply ,
 - Generate generalFunction.js for general function,
-
 
 
 
