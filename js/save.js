@@ -38,7 +38,9 @@
 	           if(err){
 	               alert("An error ocurred creating the file "+ err.message)
 	           }
-	           data.itIsSaved = true;         
+	           data.itIsSaved = true;   
+	           data.filePath = fileName;  
+	           $('title').html("Markdown Editor " + fileName);    
 	           alert("The file has been saved");
 		    });
 		},
